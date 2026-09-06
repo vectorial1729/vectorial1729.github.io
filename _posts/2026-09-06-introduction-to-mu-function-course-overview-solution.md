@@ -12,13 +12,7 @@ description: Solutions and key ideas for problems A through G of the yukicoder �
 The value we need is the sum of $\operatorname{lcm}(a,b)$ over all $1\le a\le N$ and $1\le b\le M$. First, since $\operatorname{lcm}(a,b)=ab/\gcd(a,b)$, the problem becomes computing $\sum_{a=1}^{N}\sum_{b=1}^{M}ab/\gcd(a,b)$. The part that is difficult to handle directly is $1/\gcd(a,b)$, but if we rewrite it as a sum over divisors, we can reverse the order of summation. Suppose a function $f$ satisfies $1/n=\sum_{d\mid n}f(d)$. Applying Möbius inversion gives $f(n)=\sum_{d\mid n}\mu(d)/(n/d)=\frac1n\sum_{d\mid n}\mu(d)d$. Therefore, if we define $F(n)=\sum_{d\mid n}\mu(d)d$, then $1/n=\sum_{d\mid n}F(d)/d$. Applying this to $n=\gcd(a,b)$ gives $1/\gcd(a,b)=\sum_{d\mid\gcd(a,b)}F(d)/d$. The condition $d\mid\gcd(a,b)$ means that both $d\mid a$ and $d\mid b$, so the entire sum can be rewritten in the form $\sum_d \frac{F(d)}d\left(\sum_{d\mid a}a\right)\left(\sum_{d\mid b}b\right)$. The multiples of $d$ not exceeding $N$ are $d,2d,\ldots,\lfloor N/d\rfloor d$, so their sum is $d\cdot \frac{\lfloor N/d\rfloor(\lfloor N/d\rfloor+1)}2$, and the same holds on the $M$ side. Consequently, if we define $S(x)=x(x+1)/2$, the answer is
 
 $$
-\begin{aligned}
-\sum_{d=1}^{\min(N,M)}
-&dF(d)\,
-S\!\left(\left\lfloor\frac{N}{d}\right\rfloor\right) \\
-&\qquad\cdot
-S\!\left(\left\lfloor\frac{M}{d}\right\rfloor\right).
-\end{aligned}
+\sum_{d=1}^{\min(N,M)} dF(d)\,S\!\left(\left\lfloor\frac{N}{d}\right\rfloor\right)S\!\left(\left\lfloor\frac{M}{d}\right\rfloor\right).
 $$
 
 What remains is to compute $F(d)=\sum_{k\mid d}\mu(k)k$. In the Easy Version, $N,M\le1000$, so it is sufficient to use divisor-multiple updates that add $\mu(k)k$ to every multiple of $k$. In other words, after fixing a value of $k$, add $\mu(k)k$ to $k,2k,3k,\ldots$. Then, for each $d$, exactly the values corresponding to divisors $k$ of $d$ are accumulated, producing $F(d)$. By the harmonic-series bound, this process takes $O(K\log K)$ time, and since $K=\min(N,M)\le1000$, it is easily fast enough. The key is not to handle the LCM directly, but to use Möbius inversion to rewrite $1/\gcd$ as a divisor sum and then independently calculate the sum of the multiples of each $d$.
@@ -40,13 +34,7 @@ The value requested by the problem is the sum of $\mu(d)$ over every positive co
 We need to count the ordered pairs satisfying $1\le a\le N$, $1\le b\le M$, and $\gcd(a,b)=1$. Checking every pair directly takes $O(NM)$ time, and since $N,M\le10^7$, this would require examining as many as $10^{14}$ pairs, which is impossible. The key is to eliminate the coprimality condition using the Möbius function. Substituting $n=\gcd(a,b)$ into the fundamental Möbius identity gives $[\gcd(a,b)=1]=\sum_{d\mid\gcd(a,b)}\mu(d)$. Since $d\mid\gcd(a,b)$ means that both $d\mid a$ and $d\mid b$, we have $[\gcd(a,b)=1]=\sum_{d\mid a,\ d\mid b}\mu(d)$. Thus, the answer is $\sum_{a=1}^{N}\sum_{b=1}^{M}\sum_{d\mid a,\ d\mid b}\mu(d)$. If we reverse the order of summation and choose $d$ first, the expression becomes much simpler. For a fixed $d$, the value $a$ must be a multiple of $d$ not exceeding $N$, so there are $\lfloor N/d\rfloor$ choices for $a$; similarly, there are $\lfloor M/d\rfloor$ choices for $b$. Therefore, there are $\lfloor N/d\rfloor\lfloor M/d\rfloor$ ordered pairs for which $d$ is a common divisor, and each contributes $\mu(d)$. Consequently, the answer is
 
 $$
-\begin{aligned}
-\sum_{d=1}^{\min(N,M)}
-&\mu(d)
-\left\lfloor\frac{N}{d}\right\rfloor \\
-&\qquad\cdot
-\left\lfloor\frac{M}{d}\right\rfloor.
-\end{aligned}
+\sum_{d=1}^{\min(N,M)}\mu(d)\left\lfloor\frac{N}{d}\right\rfloor\left\lfloor\frac{M}{d}\right\rfloor.
 $$
 
 We now need only the Möbius values from $1$ through $\min(N,M)$, so we can preprocess them up to $10^7$ with a sieve and then make one pass over the range. The answer itself can be as large as roughly $NM$, reaching $10^{14}$, so a `long long` is required. The key idea is not to test the two-variable relation `gcd(a,b)=1` directly, but to transform the problem into one that counts by the common divisor $d$. This reduces the double loop to a single loop.
@@ -56,30 +44,17 @@ We now need only the Möbius values from $1$ through $\min(N,M)$, so we can prep
 As in E, this problem considers ordered pairs satisfying $\gcd(a,b)=1$, but instead of adding $1$ for every pair, we add $ab$. Thus, the answer is $\sum_{\gcd(a,b)=1}ab$. Replacing the coprimality condition using the Möbius function gives $[\gcd(a,b)=1]=\sum_{d\mid a,\ d\mid b}\mu(d)$, so the entire sum becomes $\sum_{a=1}^{N}\sum_{b=1}^{M}ab\sum_{d\mid a,\ d\mid b}\mu(d)$. If we reverse the order of summation and choose $d$ first, this separates into the form $\sum_d\mu(d)\left(\sum_{d\mid a}a\right)\left(\sum_{d\mid b}b\right)$. In E, we needed only the number of multiples of $d$, but here we need the sum of the multiples themselves. The multiples of $d$ not exceeding $N$ are $d,2d,\ldots,\lfloor N/d\rfloor d$, so their sum is $d\cdot \frac{\lfloor N/d\rfloor(\lfloor N/d\rfloor+1)}2$. If we write $S(x)=x(x+1)/2$, this becomes $dS(\lfloor N/d\rfloor)$, and the same holds for $M$. Therefore, the final expression to compute is
 
 $$
-\begin{aligned}
-\sum_{d=1}^{\min(N,M)}
-&\mu(d)d^2
-S\!\left(\left\lfloor\frac{N}{d}\right\rfloor\right) \\
-&\qquad\cdot
-S\!\left(\left\lfloor\frac{M}{d}\right\rfloor\right).
-\end{aligned}
+\sum_{d=1}^{\min(N,M)}\mu(d)d^2S\!\left(\left\lfloor\frac{N}{d}\right\rfloor\right)S\!\left(\left\lfloor\frac{M}{d}\right\rfloor\right).
 $$
 
 Structurally, this is almost identical to E. The factor $\lfloor N/d\rfloor\lfloor M/d\rfloor$ from E is replaced by the sum of the multiples on each side, producing $d^2S(\lfloor N/d\rfloor)S(\lfloor M/d\rfloor)$. Since $N,M\le10^7$, it is sufficient to preprocess the Möbius values and then iterate once from $d=1$ through $\min(N,M)$. The answer is required modulo $998244353$, so every large product should be handled with a modular integer type.
 
 ## G. No.3688 LCM Sum
 
-This problem is the full version of A. The mathematical expression itself is identical, but because $N,M\le3\times10^7$, we need a faster way to construct $F(d)$. As in A, begin with $\operatorname{lcm}(a,b)=ab/\gcd(a,b)$. Define $F(n)=\sum_{d\mid n}\mu(d)d$; then Möbius inversion gives $1/n=\sum_{d\mid n}F(d)/d$. Applying this to $n=\gcd(a,b)$ and reversing the order of summation reduces the answer to
+This problem is the full version of A. The mathematical expression itself is identical, but because $N,M\le3\times10^7$, we need a faster way to construct $F(d)$. As in A, begin with $\operatorname{lcm}(a,b)=ab/\gcd(a,b)$. Define $F(n)=\sum_{d\mid n}\mu(d)d$; then Möbius inversion gives $1/n=\sum_{d\mid n}F(d)/d$. Applying this to $n=\gcd(a,b)$ and reversing the order of summation reduces the answer to the following expression, where $K=\min(N,M)$:
 
 $$
-\begin{aligned}
-K&=\min(N,M), \\
-\text{answer}
-&=\sum_{d=1}^{K} dF(d)\,
-S\!\left(\left\lfloor\frac{N}{d}\right\rfloor\right) \\
-&\qquad\cdot
-S\!\left(\left\lfloor\frac{M}{d}\right\rfloor\right).
-\end{aligned}
+\sum_{d=1}^{K}dF(d)\,S\!\left(\left\lfloor\frac{N}{d}\right\rfloor\right)S\!\left(\left\lfloor\frac{M}{d}\right\rfloor\right).
 $$
 
 In A, $K\le1000$, so it was sufficient to construct $F(d)=\sum_{k\mid d}\mu(k)k$ in $O(K\log K)$ time with divisor-multiple updates. Here, however, $K$ can be as large as $3\times10^7$, so it is better to use the properties of $F$ itself.
