@@ -6,6 +6,26 @@ order: 4
 permalink: /about/
 ---
 
+<script>
+  (async () => {
+    try {
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map((registration) => registration.unregister()));
+      }
+
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
+      }
+    } finally {
+      if (window.location.search) {
+        window.location.replace('/about/');
+      }
+    }
+  })();
+</script>
+
 # Hello, I'm `vectorial1729`.
 
 I solve problems, chase cleaner ideas, and occasionally convince a stubborn algorithm to fit inside the time limit.
