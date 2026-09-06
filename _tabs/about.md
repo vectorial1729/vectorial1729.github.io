@@ -12,15 +12,15 @@ I solve problems, chase cleaner ideas, and occasionally convince a stubborn algo
 
 Competitive programming is where mathematics, logic, and code meet under pressure. I enjoy the moment when a complicated statement collapses into one useful observation—and the even better moment when it finally earns **Accepted**.
 
-## Where I compete
+## Competitive Programming Profiles
 
-You can usually find me exploring problems across:
+Click a platform to visit my profile:
 
-- [Codeforces](https://codeforces.com/profile/vectorial1729) — fast contests, sharp implementation, and plenty of chaos
-- [AtCoder](https://atcoder.jp/users/vectorial1729) — elegant problems with beautifully hidden ideas
-- [yukicoder](https://yukicoder.me/users/24811) — creative challenges and unexpected techniques
-- [Luogu](https://www.luogu.com.cn/user/2259924) — a huge archive for learning, practice, and discovery
-- [TLX](https://tlx.toki.id/profiles/vectorial1729) — thoughtful contests and a strong competitive programming community
+- **[Codeforces — vectorial1729](https://codeforces.com/profile/vectorial1729)**
+- **[AtCoder — vectorial1729](https://atcoder.jp/users/vectorial1729)**
+- **[yukicoder — vectorial1729](https://yukicoder.me/users/24811)**
+- **[Luogu — vectorial1729](https://www.luogu.com.cn/user/2259924)**
+- **[TLX — vectorial1729](https://tlx.toki.id/profiles/vectorial1729)**
 
 And, honestly, anywhere else that has an interesting problem waiting to be solved.
 

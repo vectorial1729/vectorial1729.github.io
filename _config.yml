@@ -148,7 +148,7 @@ assets:
     env: # [development | production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: false # Disable PWA so deployed pages are always fetched fresh
   cache:
     enabled: false # Keep pages fresh instead of serving stale offline copies
     # Paths defined here will be excluded from the PWA cache.
