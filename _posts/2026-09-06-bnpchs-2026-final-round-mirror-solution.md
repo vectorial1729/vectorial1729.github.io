@@ -1,6 +1,6 @@
 ---
 title: BNPCHS 2026 Final Round Mirror (Rated Div. 2) Solution
-date: 2026-09-06 22:40:00 +0900
+date: 2026-09-06 22:35:00 +0900
 categories: [Competitive Programming, TLX]
 tags: [tlx, bnpchs, competitive-programming]
 math: true
