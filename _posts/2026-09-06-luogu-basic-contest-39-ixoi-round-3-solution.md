@@ -67,14 +67,12 @@ and fails when $n$ is larger. An $O(1)$ program requires one operation, so it al
 The problem asks for the highest possible time complexity, so the final cases are
 
 $$
-\boxed{
 \operatorname{Ans}(n)=
 \begin{cases}
 O(n^2), & 1\le n\le22360,\\[2mm]
-\texttt{O(n)}, & 22360<n\le5\times10^8,\\[2mm]
-\texttt{O(1)}, & n>5\times10^8.
+O(n), & 22360<n\le5\times10^8,\\[2mm]
+O(1), & n>5\times10^8.
 \end{cases}
-}
 $$
 
 Even though the input limit is $10^{18}$, the implementation performs only two integer comparisons. Both the time complexity and the additional memory complexity are $O(1)$.
