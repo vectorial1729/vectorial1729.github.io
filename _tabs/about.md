@@ -3,6 +3,7 @@
 title: About
 icon: fas fa-info-circle
 order: 4
+permalink: /about/
 ---
 
 # Hello, I'm `vectorial1729`.
@@ -15,11 +16,11 @@ Competitive programming is where mathematics, logic, and code meet under pressur
 
 You can usually find me exploring problems across:
 
-- [Codeforces](https://codeforces.com/) — fast contests, sharp implementation, and plenty of chaos
-- [AtCoder](https://atcoder.jp/) — elegant problems with beautifully hidden ideas
-- [yukicoder](https://yukicoder.me/) — creative challenges and unexpected techniques
-- [Luogu](https://www.luogu.com.cn/) — a huge archive for learning, practice, and discovery
-- [TLX](https://tlx.toki.id/) — thoughtful contests and a strong competitive programming community
+- [Codeforces](https://codeforces.com/profile/vectorial1729) — fast contests, sharp implementation, and plenty of chaos
+- [AtCoder](https://atcoder.jp/users/vectorial1729) — elegant problems with beautifully hidden ideas
+- [yukicoder](https://yukicoder.me/users/24811) — creative challenges and unexpected techniques
+- [Luogu](https://www.luogu.com.cn/user/2259924) — a huge archive for learning, practice, and discovery
+- [TLX](https://tlx.toki.id/profiles/vectorial1729) — thoughtful contests and a strong competitive programming community
 
 And, honestly, anywhere else that has an interesting problem waiting to be solved.
 
