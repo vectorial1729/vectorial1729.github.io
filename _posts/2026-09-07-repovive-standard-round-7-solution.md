@@ -8,15 +8,6 @@ math: true
 
 This post summarizes the solutions to problems A through F of [Repovive Standard Round 7](https://repovive.com/contests/22). The earlier problems require only short observations, but the later ones depend on identifying the precise structure: scheduling, suffix records, an exchange argument on a tree, reconstruction from two frontiers, and cut decomposition.
 
-| Problem | Title | Points | Solved |
-| --- | --- | ---: | ---: |
-| A | [Four Pieces, One Sheet](https://repovive.com/contests/22/problems/A) | 500 | 53 / 61 |
-| B | [Opposite Workflows](https://repovive.com/contests/22/problems/B) | 1000 | 27 / 32 |
-| C | [Prefix Painting](https://repovive.com/contests/22/problems/C) | 1500 | 23 / 25 |
-| D | [Moving the Sand](https://repovive.com/contests/22/problems/D) | 2000 | 16 / 16 |
-| E | [Age Reports](https://repovive.com/contests/22/problems/E) | 2500 | 4 / 5 |
-| F | [Shortest Wiring](https://repovive.com/contests/22/problems/F) | 3000 | 1 / 1 |
-
 ## A. Four Pieces, One Sheet
 
 Suppose the horizontal side is divided into two positive lengths $x,w>0$, and the vertical side into two positive lengths $y,z>0$. With a suitable ordering, the areas of the four rectangles are
